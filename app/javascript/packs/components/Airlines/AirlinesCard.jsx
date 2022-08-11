@@ -1,9 +1,11 @@
 import React from 'react'
 import './airlines.css'
 
-const AirlinesCard = (props) => {
+const AirlinesCard = ({airline}) => {
   return(
-    <div>Airline Card number {props.airline.id}</div>
+    <div className="airlines-card">
+      <div className="airlines-card-name">{airline.attributes.name}</div>
+    </div>
   )
 }
 

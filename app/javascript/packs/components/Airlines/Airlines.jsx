@@ -1,4 +1,5 @@
 import React, { useState, useEffetc, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import AirlinesCard from './AirlinesCard'
 import './airlines.css'
 
@@ -15,14 +16,18 @@ const Airlines = () => {
       console.log(data.data)})
   }, [airlines.length])
 
-
   return (
     <div className="index-container">
-      <div>I am the Airlines #INDEX</div>
-      {airlines?.map((airline) => {
-        return (
-          <div key={airline.id}> <AirlinesCard airline={airline} /></div>)
-      })}
+      <div className="airlines-title">All airlines</div>
+      <div className="airlines-card-container">
+        {airlines?.map((airline) => {
+          return (
+            <Link to={"/airlines/" + airline.attributes.slug} key={airline.id}>
+              <div> <AirlinesCard airline={airline} /></div>
+            </Link>
+            )
+        })}
+      </div>
     </div>
   )
 }
