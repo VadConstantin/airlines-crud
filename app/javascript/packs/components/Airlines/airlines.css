@@ -25,8 +25,19 @@
   border: 1px solid black;
   border-radius: 10px;
   padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .airlines-card-name {
   text-align: center;
+}
+
+.airlines-card-img {
+  max-width: 150px;
+  margin-top: 20px;
+  border-radius: 50%;
+  height: 150px;
+  object-fit: contain;
 }
