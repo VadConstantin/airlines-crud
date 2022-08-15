@@ -29,6 +29,8 @@
   margin: 20px 0 0px 0;
   cursor: pointer;
   margin-bottom: 20px;
+  max-width: 70px;
+  text-decoration: none;
 }
 
 .button-1:hover {

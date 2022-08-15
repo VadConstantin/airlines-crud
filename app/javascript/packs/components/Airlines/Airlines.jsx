@@ -22,7 +22,7 @@ const Airlines = () => {
       <div className="airlines-card-container">
         {airlines?.map((airline) => {
           return (
-            <Link to={"/airlines/" + airline.attributes.slug} key={airline.id}>
+            <Link to={"/airlines/" + airline.attributes.slug} key={airline.id} >
               <div> <AirlinesCard airline={airline} /></div>
             </Link>
             )
