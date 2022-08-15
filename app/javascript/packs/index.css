@@ -16,7 +16,27 @@
   cursor: pointer;
 }
 
+.button-2 {
+  border: 1px solid black;
+  background-color: white;
+  color: #000B14 !important;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 15px 30px;
+  border-radius: 10px;
+  letter-spacing: 2px;
+  opacity: 1;
+  margin: 20px 0 0px 0;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
 .button-1:hover {
+  color: white !important;
+  background-color: #000B14;
+}
+
+.button-2:hover {
   color: white !important;
   background-color: #000B14;
 }
