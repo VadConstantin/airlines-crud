@@ -19,6 +19,11 @@
   gap: 20px;
 }
 
+.airlines-card-container a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .airlines-card {
   width: 200px;
   height: 200px;
@@ -28,6 +33,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.airlines-card:hover {
+  background: rgb(236 230 240);
 }
 
 .airlines-card-name {

@@ -29,8 +29,8 @@ const Airline = () => {
   return(
     airlines.length > 0 && (
     <div className="show-page-container">
-      {/* <button className="button-2" onClick={() => navigate(-1)}> Go back</button> */}
-        <Link to={"/airlines"} className="button-2"> Go back </Link>
+      <button className="button-2" onClick={() => navigate(-1)}> Go back</button>
+        {/* <Link to={"/airlines"} className="button-2"> Go back </Link> */}
       <div className="display-flex-show">
         <div className="show-card">
             <h1> {airline.attributes.name}</h1>
