@@ -41,9 +41,20 @@ const Airline = () => {
         </div>
         <div className="show-reviews-card">
           <h1>Reviews</h1>
-          {airlineReviews?.map(review => {
-            return "hello"
-          })}
+          <button className="add-review-button"> + </button>
+          <div className="reviews-display-flex">
+            {airlineReviews?.map(review => {
+              return (
+                <div className="review-item">
+                  <div className="title-score-container">
+                    <h4> {review.attributes.title} </h4>
+                    <h4> {review.attributes.score}/5</h4>
+                  </div>
+                  <p className="review-description"> {review.attributes.description} </p>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </div>
 

@@ -45,4 +45,55 @@
   flex-direction: column;
   align-items: center;
   flex: 1;
+  position: relative
+}
+
+.reviews-display-flex {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+  gap: 10px;
+}
+
+.review-item {
+  border-radius: 10px;
+  background-color: rgb(24, 19, 24);
+  padding: 15px 15px;
+  color: white;
+  font-weight: 200;
+  width: 280px;
+}
+
+.review-description {
+  opacity: 0.6;
+  font-weight: 100;
+}
+
+.add-review-button {
+  position: absolute;
+  border: 1px solid rgb(24, 19, 24);
+  background-color: white;
+  color: #000B14 !important;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 15px 20px;
+  border-radius: 10px;
+  letter-spacing: 2px;
+  opacity: 1;
+  margin: 20px 0 0px 0;
+  cursor: pointer;
+  margin-bottom: 20px;
+  max-width: 70px;
+  text-decoration: none;
+  left: 20px;
+}
+
+.add-review-button:hover {
+  color: white !important;
+  background-color: rgb(24, 19, 24);
+}
+
+.title-score-container {
+  display: flex;
+  justify-content: space-between;
 }
