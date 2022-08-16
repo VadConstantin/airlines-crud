@@ -36,7 +36,8 @@
 }
 
 .airlines-card:hover {
-  background: rgb(236 230 240);
+  color: white !important;
+  background-color: rgb(24, 19, 24);
 }
 
 .airlines-card-name {

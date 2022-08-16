@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import './airline.css'
+import ReviewForm from './ReviewForm'
 
 
 const url = "/api/v1/airlines.json"
@@ -9,8 +10,9 @@ const Airline = () => {
 
   const navigate = useNavigate()
   const params = useParams()
-  const [airlines, setAirlines ] = useState([])
-  const [reviews, setReviews ] = useState([])
+  const [ airlines, setAirlines ] = useState([])
+  const [ reviews, setReviews ] = useState([])
+  const [ isVisible, setIsVisible ] = useState(false)
 
   useEffect(() => {
     fetch(url)
@@ -20,11 +22,20 @@ const Airline = () => {
       setReviews(data.included);})
   }, [ airlines.length])
 
+  const handleClick = () => {
+    setIsVisible(prev => !prev)
+  }
 
   const airline = airlines?.filter(element => element.attributes.slug === params.slug)[0]
   const airlineReviews = reviews?.filter(element => element.attributes.airline_id === parseInt(airline.id))
 
-  console.log(airlineReviews);
+  const min = 1;
+  const max = 5;
+
+  const handleChangeNumber = event => {
+    const value = Math.max(min, Math.min(max, Number(event.target.value)));
+    setValue(value);
+  };
 
   return(
     airlines.length > 0 && (
@@ -39,13 +50,16 @@ const Airline = () => {
               <p>Average score {airline.attributes.average_score}/5</p>
             </div>
         </div>
+
         <div className="show-reviews-card">
           <h1>Reviews</h1>
-          <button className="add-review-button"> + </button>
+          <button className="add-review-button" onClick={handleClick}> + </button>
+
           <div className="reviews-display-flex">
+            {isVisible && <ReviewForm airline={airline}/>}
             {airlineReviews?.map(review => {
               return (
-                <div className="review-item">
+                <div className="review-item" key={review.id}>
                   <div className="title-score-container">
                     <h4> {review.attributes.title} </h4>
                     <h4> {review.attributes.score}/5</h4>
@@ -55,7 +69,9 @@ const Airline = () => {
               )
             })}
           </div>
+
         </div>
+
       </div>
 
     </div>

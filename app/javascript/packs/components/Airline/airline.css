@@ -64,6 +64,16 @@
   width: 280px;
 }
 
+.review-input {
+  border-radius: 10px;
+  background-color: #ccffb6;
+  padding: 15px 15px;
+  color: rgb(24, 19, 24);
+  font-weight: 200;
+  width: 280px;
+  text-align: center;
+}
+
 .review-description {
   opacity: 0.6;
   font-weight: 100;
