@@ -76,6 +76,9 @@ input[type="text" i] {
 
 input[type="number" i] {
   padding: 10px;
-  margin-left: 10px;
   min-width: 50px;
+  margin: 10px;
+  border: 1px;
+  width: 25%;
+  border-radius: 8px;
 }

@@ -5,6 +5,7 @@ import ReviewForm from './ReviewForm'
 
 
 const url = "/api/v1/airlines.json"
+const reviewsUrl = "/api/v1/reviews"
 
 const Airline = () => {
 
@@ -13,6 +14,7 @@ const Airline = () => {
   const [ airlines, setAirlines ] = useState([])
   const [ reviews, setReviews ] = useState([])
   const [ isVisible, setIsVisible ] = useState(false)
+  const [ newReview, setNewReview ] = useState({})
 
   useEffect(() => {
     fetch(url)
@@ -29,13 +31,25 @@ const Airline = () => {
   const airline = airlines?.filter(element => element.attributes.slug === params.slug)[0]
   const airlineReviews = reviews?.filter(element => element.attributes.airline_id === parseInt(airline.id))
 
-  const min = 1;
-  const max = 5;
+  const changeForm = (e) => {
+    setNewReview((prev) => {
+      return {...prev, [e.target.name]: e.target.value}
+    })
+  }
 
-  const handleChangeNumber = event => {
-    const value = Math.max(min, Math.min(max, Number(event.target.value)));
-    setValue(value);
-  };
+  const submitForm = (e) => {
+    e.preventDefault()
+    const submitOptions = {
+      method: "POST",
+      headers: ""
+    }
+    const airline_id = airline?.id
+    fetch(reviewsUrl, submitOptions)
+    .then()
+
+  }
+
+  console.log(newReview);
 
   return(
     airlines.length > 0 && (
@@ -56,7 +70,11 @@ const Airline = () => {
           <button className="add-review-button" onClick={handleClick}> + </button>
 
           <div className="reviews-display-flex">
-            {isVisible && <ReviewForm airline={airline}/>}
+            {isVisible && <ReviewForm
+              airline={airline}
+              changeForm = {(e) => changeForm(e)}
+              submitForm = {(e) => submitForm(e)}
+              />}
             {airlineReviews?.map(review => {
               return (
                 <div className="review-item" key={review.id}>
