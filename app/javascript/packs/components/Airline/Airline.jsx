@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import './airline.css'
 import ReviewForm from './ReviewForm'
@@ -11,6 +11,7 @@ const Airline = () => {
 
   const navigate = useNavigate()
   const params = useParams()
+
   const [ airlines, setAirlines ] = useState([])
   const [ reviews, setReviews ] = useState([])
   const [ isVisible, setIsVisible ] = useState(false)
@@ -24,32 +25,45 @@ const Airline = () => {
       setReviews(data.included);})
   }, [ airlines.length])
 
+  const airline = airlines?.filter(element => element?.attributes.slug === params.slug)[0]
+  const airlineReviews = reviews?.filter(element => element?.attributes.airline_id === parseInt(airline.id))
+
   const handleClick = () => {
     setIsVisible(prev => !prev)
   }
 
-  const airline = airlines?.filter(element => element.attributes.slug === params.slug)[0]
-  const airlineReviews = reviews?.filter(element => element.attributes.airline_id === parseInt(airline.id))
-
-  const changeForm = (e) => {
+  const changeForm = useCallback((e) => {
     setNewReview((prev) => {
-      return {...prev, [e.target.name]: e.target.value}
-    })
-  }
+      return { ...prev, [e.target.name]: e.target.value }
+    })}, [newReview])
 
   const submitForm = (e) => {
     e.preventDefault()
+    const airline_id = airline?.id
     const submitOptions = {
       method: "POST",
-      headers: ""
+      headers: {
+        "Content-type": "application/json; charset=UTF-8"
+      },
+      body: JSON.stringify({
+        title: newReview.review_title,
+        description: newReview.review_description,
+        score: newReview.review_score,
+        airline_id: airline_id
+      }),
     }
-    const airline_id = airline?.id
-    fetch(reviewsUrl, submitOptions)
-    .then()
 
+    fetch(reviewsUrl, submitOptions)
+    .then(res => res.json())
+    // .then(data => console.log(data.data))
+    .then(data => {
+      setReviews((prev) => {
+      return [...prev, data?.data]
+    })})
   }
 
-  console.log(newReview);
+  // console.log(reviews);
+  console.log("airline Component renders");
 
   return(
     airlines.length > 0 && (

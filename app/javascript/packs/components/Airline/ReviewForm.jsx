@@ -1,17 +1,18 @@
-import React, {useCallback} from 'react'
+import React, {useState, useCallback} from 'react'
 import './airline.css'
 
 const ReviewForm = (props) => {
 
+  const [formInput, setFormInput ] = useState()
+
   const handleChange = useCallback((event) => {
-    props.changeForm(event)
-  }, [])
+    setFormInput(event)
+  }, [formInput])
 
   const submitForm = (event) => {
     event.preventDefault()
     props.submitForm(event)
   }
-
 
   const handleKeyPress = (event) => {
     if (!/[1-5]/.test(event.key)) {
@@ -19,6 +20,7 @@ const ReviewForm = (props) => {
     }
   }
 
+  console.log("review form renders");
 
   return(
     <div className="review-input">
@@ -27,20 +29,20 @@ const ReviewForm = (props) => {
 
       <form onSubmit={submitForm}>
         <div>
-          <label htmlFor="review-title">Title of your review</label>
-          <input type="text" name="review-title" id="review-title" onChange={handleChange} />
+          <label htmlFor="review_title">Title of your review</label>
+          <input type="text" name="review_title" id="review_title" onChange={handleChange} />
         </div>
 
         <div>
-          <label htmlFor="review-description">Describe your experience</label>
-          <textarea id="review" name="review-description"
+          <label htmlFor="review_description">Describe your experience</label>
+          <textarea id="review_description" name="review_description"
             rows="5" cols="33" onChange={handleChange}>
           </textarea>
         </div>
 
         <div>
           <label htmlFor="score">Rate this airline ! (from 1 to 5)</label>
-          <input type="number" id="score" name="review-score" min={1} max={5} onChange={handleChange} onKeyPress={handleKeyPress} />
+          <input type="number" id="score" name="review_score" min={1} max={5} onChange={handleChange} onKeyPress={handleKeyPress} />
         </div>
 
         <button type="submit" className="button-3">Submit review</button>
@@ -49,4 +51,4 @@ const ReviewForm = (props) => {
   )
 }
 
-export default ReviewForm
+export default React.memo(ReviewForm)
