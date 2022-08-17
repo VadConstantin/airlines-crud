@@ -6,13 +6,12 @@ const ReviewForm = (props) => {
   const [ formInput, setFormInput ] = useState({})
   const [ isDisable, setIsDisable ] = useState(true)
 
-  const handleChange = useCallback((event) => {
+  const handleChange = (event) => {
     props.changeForm(event)
     setFormInput(prev => {
       return { ...prev, [event.target.name]: event.target.value }
     })
-
-  }, [formInput])
+  }
 
   useEffect(() => {
     if (Object.values(formInput).length > 2 && (Object.values(formInput).every(item => item.length > 0))) {

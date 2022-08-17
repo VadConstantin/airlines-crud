@@ -15,6 +15,7 @@ const Airline = () => {
   const [ airlines, setAirlines ] = useState([])
   const [ reviews, setReviews ] = useState([])
   const [ isVisible, setIsVisible ] = useState(false)
+  const [ buttonContent, setButtonContent ] = useState("+")
   const [ newReview, setNewReview ] = useState({})
 
   useEffect(() => {
@@ -30,6 +31,7 @@ const Airline = () => {
 
   const handleClick = () => {
     setIsVisible(prev => !prev)
+    setButtonContent(element => element === "+" ? "-" : "+")
   }
 
   const changeForm = useCallback((e) => {
@@ -78,7 +80,7 @@ const Airline = () => {
 
         <div className="show-reviews-card">
           <h1>Reviews</h1>
-          <button className="add-review-button" onClick={handleClick}> + </button>
+          <button className="add-review-button" onClick={handleClick}> {buttonContent} </button>
 
           <div className="reviews-display-flex">
             {isVisible && <ReviewForm
@@ -87,7 +89,7 @@ const Airline = () => {
               submitForm = {(e) => submitForm(e)}
               />}
 
-            {airlineReviews?.sort((a, b) => b.id - a.id).map(review => {
+            {airlineReviews?.sort((a, b) => b.id - a.id).slice(-5).map(review => {
               return (
                 <div className="review-item" key={review.id}>
                   <div className="title-score-container">
