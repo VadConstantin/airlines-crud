@@ -6,6 +6,7 @@ const ReviewForm = (props) => {
   const [formInput, setFormInput ] = useState()
 
   const handleChange = useCallback((event) => {
+    props.changeForm(event)
     setFormInput(event)
   }, [formInput])
 
@@ -13,6 +14,7 @@ const ReviewForm = (props) => {
     event.preventDefault()
     props.submitForm(event)
   }
+
 
   const handleKeyPress = (event) => {
     if (!/[1-5]/.test(event.key)) {
@@ -51,4 +53,4 @@ const ReviewForm = (props) => {
   )
 }
 
-export default React.memo(ReviewForm)
+export default ReviewForm

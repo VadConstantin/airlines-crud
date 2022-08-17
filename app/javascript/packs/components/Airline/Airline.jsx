@@ -23,7 +23,7 @@ const Airline = () => {
     .then(data => {
       setAirlines(data.data)
       setReviews(data.included);})
-  }, [ airlines.length])
+  }, [ airlines.length, reviews.length])
 
   const airline = airlines?.filter(element => element?.attributes.slug === params.slug)[0]
   const airlineReviews = reviews?.filter(element => element?.attributes.airline_id === parseInt(airline.id))
@@ -55,15 +55,16 @@ const Airline = () => {
 
     fetch(reviewsUrl, submitOptions)
     .then(res => res.json())
-    // .then(data => console.log(data.data))
+    .then(data => console.log(data.data))
     .then(data => {
       setReviews((prev) => {
       return [...prev, data?.data]
     })})
+    .then(setIsVisible(prev => !prev))
   }
 
   // console.log(reviews);
-  console.log("airline Component renders");
+  // console.log("airline Component renders");
 
   return(
     airlines.length > 0 && (
@@ -89,7 +90,7 @@ const Airline = () => {
               changeForm = {(e) => changeForm(e)}
               submitForm = {(e) => submitForm(e)}
               />}
-            {airlineReviews?.map(review => {
+              {airlineReviews?.sort((a, b) => b.id - a.id).map(review => {
               return (
                 <div className="review-item" key={review.id}>
                   <div className="title-score-container">
