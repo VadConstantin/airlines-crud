@@ -63,14 +63,10 @@ const Airline = () => {
     .then(setIsVisible(prev => !prev))
   }
 
-  // console.log(reviews);
-  // console.log("airline Component renders");
-
   return(
     airlines.length > 0 && (
     <div className="show-page-container">
       <button className="button-2" onClick={() => navigate(-1)}> Go back</button>
-        {/* <Link to={"/airlines"} className="button-2"> Go back </Link> */}
       <div className="display-flex-show">
         <div className="show-card">
             <h1> {airline.attributes.name}</h1>
@@ -90,7 +86,8 @@ const Airline = () => {
               changeForm = {(e) => changeForm(e)}
               submitForm = {(e) => submitForm(e)}
               />}
-              {airlineReviews?.sort((a, b) => b.id - a.id).map(review => {
+
+            {airlineReviews?.sort((a, b) => b.id - a.id).map(review => {
               return (
                 <div className="review-item" key={review.id}>
                   <div className="title-score-container">
