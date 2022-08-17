@@ -4,6 +4,7 @@ import './airline.css'
 const ReviewForm = (props) => {
 
   const [formInput, setFormInput ] = useState()
+  const [ isDisable, setIsDisable ] = useState(false)
 
   const handleChange = useCallback((event) => {
     props.changeForm(event)
@@ -47,7 +48,7 @@ const ReviewForm = (props) => {
           <input type="number" id="score" name="review_score" min={1} max={5} onChange={handleChange} onKeyPress={handleKeyPress} />
         </div>
 
-        <button type="submit" className="button-3">Submit review</button>
+        <button className={isDisable ? "disabled button-3" : "disabled button-3"} type="submit">Submit review</button>
       </form>
     </div>
   )
