@@ -92,7 +92,7 @@ const Airline = () => {
         </div>
 
         <div className="show-reviews-card">
-          <h1>Reviews</h1>
+          <h1 className="reviews-section-title">Reviews</h1>
           <button className="add-review-button" onClick={handleClick}> {buttonContent} </button>
 
           <div className="reviews-display-flex">

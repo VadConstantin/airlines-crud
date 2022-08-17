@@ -18,7 +18,7 @@ const Airlines = () => {
 
   return (
     <div className="index-container">
-      <div className="airlines-title">All airlines</div>
+      <div className="airlines-title">All Companies</div>
       <div className="airlines-card-container">
         {airlines?.map((airline) => {
           return (
