@@ -66,6 +66,18 @@ const Airline = () => {
     // alert("review posted !")
   }
 
+  const handleDelete = (id) => {
+    fetch(`http://localhost:3000/api/v1/reviews/${id}`, { method: "DELETE" })
+    .then(res => res.text())
+    .then(data => console.log(data))
+    .then(data => {
+      setReviews((prev) => {
+        return [...prev, null]
+    })})
+  }
+
+  console.log(reviews);
+
   return(
     airlines.length > 0 && (
     <div className="show-page-container">
@@ -97,6 +109,7 @@ const Airline = () => {
                     <h4> {review.attributes.title} </h4>
                     <h4> {review.attributes.score}/5</h4>
                   </div>
+                  <button className="delete-review" onClick={() => handleDelete(review.id)}>X</button>
                   <p className="review-description"> {review.attributes.description} </p>
                 </div>
               )
