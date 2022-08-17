@@ -3,7 +3,6 @@ import { useParams, useNavigate, Link } from 'react-router-dom'
 import './airline.css'
 import ReviewForm from './ReviewForm'
 
-
 const url = "/api/v1/airlines.json"
 const reviewsUrl = "/api/v1/reviews"
 
@@ -15,7 +14,6 @@ const Airline = () => {
   const [ airlines, setAirlines ] = useState([])
   const [ reviews, setReviews ] = useState([])
   const [ isVisible, setIsVisible ] = useState(false)
-  const [ buttonContent, setButtonContent ] = useState("+")
   const [ newReview, setNewReview ] = useState({})
 
   useEffect(() => {
@@ -63,7 +61,6 @@ const Airline = () => {
       return [...prev, data?.data]
     })})
     .then(setIsVisible(prev => !prev))
-    // alert("review posted !")
   }
 
   const handleDelete = (id) => {
@@ -75,8 +72,6 @@ const Airline = () => {
         return [...prev, null]
     })})
   }
-
-  console.log(reviews);
 
   return(
     airlines.length > 0 && (
@@ -90,10 +85,9 @@ const Airline = () => {
               <p>Average score {airline.attributes.average_score}/5</p>
             </div>
         </div>
-
         <div className="show-reviews-card">
           <h1 className="reviews-section-title">Reviews</h1>
-          <button className="add-review-button" onClick={handleClick}> {buttonContent} </button>
+          <button className="add-review-button" onClick={handleClick}> + </button>
 
           <div className="reviews-display-flex">
             {isVisible && <ReviewForm
@@ -109,7 +103,7 @@ const Airline = () => {
                     <h4> {review.attributes.title} </h4>
                     <h4> {review.attributes.score}/5</h4>
                   </div>
-                  <button className="delete-review" onClick={() => handleDelete(review.id)}>X</button>
+                  <button className="delete-review" onClick={() => handleDelete(review.id)}> <div className="plus-rotate">+</div> </button>
                   <p className="review-description"> {review.attributes.description} </p>
                 </div>
               )
@@ -117,9 +111,7 @@ const Airline = () => {
           </div>
 
         </div>
-
       </div>
-
     </div>
     )
   )

@@ -34,7 +34,7 @@ const ReviewForm = (props) => {
 
   return(
     <div className="review-input">
-      <h4> Enter Review for {props.airline.attributes.name}</h4>
+      <h4> Give your opinion about <br /> {props.airline.attributes.name}</h4>
       <form onSubmit={submitForm}>
         <div>
           <label htmlFor="review_title">Title of your review</label>
@@ -49,7 +49,7 @@ const ReviewForm = (props) => {
         </div>
 
         <div>
-          <label htmlFor="score">Rate this airline ! (from 1 to 5)</label>
+          <label htmlFor="score">Rate this airline from 1 to 5</label>
           <input type="number" id="score" name="review_score" min={1} max={5} onChange={handleChange} onKeyPress={handleKeyPress} />
         </div>
 
