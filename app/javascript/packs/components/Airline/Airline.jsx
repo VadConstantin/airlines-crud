@@ -63,6 +63,7 @@ const Airline = () => {
       return [...prev, data?.data]
     })})
     .then(setIsVisible(prev => !prev))
+    // alert("review posted !")
   }
 
   return(
