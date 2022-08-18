@@ -83,7 +83,7 @@ const Airline = () => {
           <h1> {airline.attributes.name}</h1>
           <img src={airline.attributes.image_url} className="airlines-show-card-img" />
           <div className="average_score">
-            <p>Average score {airline.attributes.average_score}/5</p>
+              <p style={{textAlign: "center"}}><strong>Score</strong> {airline.attributes.average_score}/5</p>
             <div>{scoreStars(airline.attributes.average_score)}</div>
           </div>
         </div>
