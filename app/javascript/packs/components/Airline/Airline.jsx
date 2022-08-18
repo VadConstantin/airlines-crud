@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import './airline.css'
 import ReviewForm from './ReviewForm'
+import scoreStars from '../../Utilities/score'
 
 const url = "/api/v1/airlines.json"
 const reviewsUrl = "/api/v1/reviews"
@@ -79,11 +80,12 @@ const Airline = () => {
       <button className="button-2" onClick={() => navigate(-1)}> Go back</button>
       <div className="display-flex-show">
         <div className="show-card">
-            <h1> {airline.attributes.name}</h1>
-            <img src={airline.attributes.image_url} className="airlines-show-card-img" />
-            <div className="average_score">
-              <p>Average score {airline.attributes.average_score}/5</p>
-            </div>
+          <h1> {airline.attributes.name}</h1>
+          <img src={airline.attributes.image_url} className="airlines-show-card-img" />
+          <div className="average_score">
+            <p>Average score {airline.attributes.average_score}/5</p>
+            <div>{scoreStars(airline.attributes.average_score)}</div>
+          </div>
         </div>
         <div className="show-reviews-card">
           <h1 className="reviews-section-title">Reviews</h1>

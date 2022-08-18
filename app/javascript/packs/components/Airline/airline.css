@@ -60,6 +60,7 @@
   flex-direction: column;
   text-align: start;
   gap: 10px;
+  width: 100%;
 }
 
 .review-item {
@@ -68,7 +69,7 @@
   padding: 15px 15px;
   color: white;
   font-weight: 200;
-  width: 280px;
+  width: calc(100% - 30px);
   position: relative;
   margin-top: 10px;
 }
@@ -79,7 +80,7 @@
   padding: 15px 15px;
   color: #3e3e3e;
   font-weight: 200;
-  width: 280px;
+  width: calc(100% - 30px);
   text-align: center;
 }
 
