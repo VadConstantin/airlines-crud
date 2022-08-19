@@ -64,7 +64,7 @@ const Airline = () => {
   }
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:3000/api/v1/reviews/${id}`, { method: "DELETE" })
+    fetch(`/api/v1/reviews/${id}`, { method: "DELETE" })
     .then(res => res.text())
     .then(data => {
       setReviews((prev) => {
