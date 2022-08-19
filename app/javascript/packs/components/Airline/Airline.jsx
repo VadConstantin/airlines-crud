@@ -76,42 +76,41 @@ const Airline = () => {
 
   return(
     airlines.length > 0 && (
-    <div className="show-page-container">
+    <div>
       <button className="button-2" onClick={() => navigate(-1)}> Go back</button>
-      <div className="display-flex-show">
-        <div className="show-card">
-          <h1> {airline.attributes.name}</h1>
-          <img src={airline.attributes.image_url} className="airlines-show-card-img" />
-          <div className="average_score">
-              <p style={{textAlign: "center"}}><strong>Score</strong> {airline.attributes.average_score}/5</p>
-            <div>{scoreStars(airline.attributes.average_score)}</div>
+      <div className="show-page-container">
+        <div className="display-flex-show">
+          <div className="show-card">
+            <h1> {airline.attributes.name}</h1>
+            <img src={airline.attributes.image_url} className="airlines-show-card-img" />
+            <div className="average_score">
+                <p style={{textAlign: "center"}}><strong>Score</strong> {airline.attributes.average_score}/5</p>
+              <div>{scoreStars(airline.attributes.average_score)}</div>
+            </div>
           </div>
-        </div>
-        <div className="show-reviews-card">
-          <h1 className="reviews-section-title">Reviews</h1>
-          <button className="add-review-button" onClick={handleClick}> + </button>
-
-          <div className="reviews-display-flex">
-            {isVisible && <ReviewForm
-              airline={airline}
-              changeForm = {(e) => changeForm(e)}
-              submitForm = {(e) => submitForm(e)}
-              />}
-
-            {airlineReviews?.sort((a, b) => b.id - a.id).slice(-5).map(review => {
-              return (
-                <div className="review-item" key={review.id}>
-                  <div className="title-score-container">
-                    <h4> {review.attributes.title} </h4>
-                    <h4> {review.attributes.score}/5</h4>
+          <div className="show-reviews-card">
+            <h1 className="reviews-section-title">Reviews</h1>
+            <button className="add-review-button" onClick={handleClick}> + </button>
+            <div className="reviews-display-flex">
+              {isVisible && <ReviewForm
+                airline={airline}
+                changeForm = {(e) => changeForm(e)}
+                submitForm = {(e) => submitForm(e)}
+                />}
+              {!isVisible && airlineReviews?.sort((a, b) => b.id - a.id).slice(-5).map(review => {
+                return (
+                  <div className="review-item" key={review.id}>
+                    <div className="title-score-container">
+                      <h4> {review.attributes.title} </h4>
+                      <h4> {review.attributes.score}/5</h4>
+                    </div>
+                    <button className="delete-review" onClick={() => handleDelete(review.id)}> <div className="plus-rotate">+</div> </button>
+                    <p className="review-description"> {review.attributes.description} </p>
                   </div>
-                  <button className="delete-review" onClick={() => handleDelete(review.id)}> <div className="plus-rotate">+</div> </button>
-                  <p className="review-description"> {review.attributes.description} </p>
-                </div>
-              )
-            })}
+                )
+              })}
+            </div>
           </div>
-
         </div>
       </div>
     </div>
