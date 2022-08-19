@@ -56,7 +56,6 @@ const Airline = () => {
 
     fetch(reviewsUrl, submitOptions)
     .then(res => res.json())
-    .then(data => console.log(data.data))
     .then(data => {
       setReviews((prev) => {
       return [...prev, data?.data]
@@ -67,7 +66,6 @@ const Airline = () => {
   const handleDelete = (id) => {
     fetch(`http://localhost:3000/api/v1/reviews/${id}`, { method: "DELETE" })
     .then(res => res.text())
-    .then(data => console.log(data))
     .then(data => {
       setReviews((prev) => {
         return [...prev, null]
