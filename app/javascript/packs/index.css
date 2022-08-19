@@ -35,6 +35,11 @@ html {
   text-decoration: none;
 }
 
+.button-2:hover {
+  color: white !important;
+  background-color: #3e3e3e;
+}
+
 .button-3 {
   border: 1px;
   background-color: white;
@@ -56,10 +61,6 @@ html {
   background-color: #000B14;
 }
 
-.button-2:hover {
-  color: white !important;
-  background-color: #3e3e3e;
-}
 
 textarea {
   border-radius: 10px;

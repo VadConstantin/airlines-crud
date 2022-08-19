@@ -1,0 +1,44 @@
+.home-container {
+  margin: auto;
+  max-width: 1000px;
+  padding: 0 30px;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.button-home {
+  border: 1px solid transparent;
+  background-color: white;
+  color: #3e3e3e !important;
+  font-size: 14px;
+  font-weight: 700;
+  padding: 15px 30px;
+  border-radius: 10px;
+  letter-spacing: 2px;
+  opacity: 1;
+  cursor: pointer;
+  max-width: 300px;
+  text-decoration: none;
+}
+
+.button-home:hover {
+  color: white !important;
+  background-color: #3e3e3e;
+}
+
+.slog {
+  text-align: center;
+  color: #e3c0ff;
+  font-weight: 500;
+  font-size: 1.5rem;
+  margin: 15px 0px 15px;
+}
+
+.airlines-title-home {
+  text-align: center;
+  font-size: 5rem;
+  font-weight: 700;
+  color: #e3c0ff;
+}
